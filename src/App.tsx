@@ -31,7 +31,11 @@ export default function App() {
   const [showPushNudge, setShowPushNudge] = useState(false);
 
   useEffect(() => { const t = setTimeout(() => setSplash(false), 1000); return () => clearTimeout(t); }, []);
-  useEffect(() => { localStorage.setItem('monogram:dark', String(dark)); if (dark) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark'); }, [dark]);
+  useEffect(() => { 
+    localStorage.setItem('monogram:dark', String(dark)); 
+    if (dark) document.documentElement.classList.add('dark'); 
+    else document.documentElement.classList.remove('dark'); 
+  }, [dark]);
 
   // Register for push on sign-in
   useEffect(() => { if (appUser && pushSupported) registerPush(); }, [appUser, pushSupported]);
@@ -56,7 +60,14 @@ export default function App() {
     return (
       <div className={`h-full w-full flex flex-col items-center justify-center ${dark ? 'bg-black' : 'bg-white'} animate-[fadeUp_300ms_ease-out]`}>
         <div className={`w-24 h-24 rounded-[28px] flex items-center justify-center animate-pulse-soft ${dark ? 'bg-white' : 'bg-black'}`}>
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={dark ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke={dark ? 'black' : 'white'} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 20h9" />
+            <path d="M12 4h9" />
+            <path d="M12 12h9" />
+            <path d="M4 20H3" />
+            <path d="M4 4H3" />
+            <path d="M4 12H3" />
+          </svg>
         </div>
         <p className={`mt-6 text-sm font-medium ${dark ? 'text-white/60' : 'text-black/60'}`}>Monogram</p>
       </div>
